@@ -2,6 +2,6 @@
 
 ## [p1](p1/)
 
-### [mini p1](p1/mini/)
+- ### [mini p1](p1/mini/)
 
-<!-- ### [main p1](p1/main/) -->
+- ### [main p1](p1/main/)
