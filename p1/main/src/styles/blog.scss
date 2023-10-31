@@ -1,0 +1,118 @@
+.blog {
+  @apply text-white;
+
+  .blog-post {
+    .post-title {
+      @apply py-10;
+      h1 {
+        @apply my-0 text-white;
+      }
+      span {
+        @apply border-b-2 text-light pl-0.5
+        border-light w-full block;
+      }
+    }
+
+    .post-section {
+      & {
+        @apply text-white/90;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      a,
+      strong {
+        @apply text-white;
+      }
+
+      h1,
+      h2 {
+        @apply border-b-2 border-dark pb-2;
+      }
+
+      a {
+        @extend .link1;
+        @apply no-underline;
+      }
+
+      li::marker {
+        @apply text-white;
+      }
+
+      :not(pre) > code {
+        font-family: "Roboto Mono", monospace;
+
+        @apply px-1 rounded py-0.5 text-black bg-white/90;
+      }
+
+      pre {
+        @apply bg-white shadow-white drop-shadow-glow-link-1 p-0.5;
+        font-family: "Roboto Mono", monospace !important;
+        /* @apply bg-white/90; */
+        code {
+          font-family: "Roboto Mono", monospace !important;
+
+          @apply px-1.5 rounded py-1 bg-black;
+          /* text-black bg-transparent ; */
+        }
+      }
+      img {
+        @apply rounded;
+      }
+    }
+  }
+  .other-section {
+    .other-links {
+      @apply justify-center py-3;
+      a {
+        @extend .link1;
+        @apply w-full no-underline py-2 prose-2xl text-white flex-nowrap;
+      }
+    }
+
+    .o-tags-s {
+      @apply text-left prose-2xl text-white;
+      .o-tags {
+        @apply flex flex-wrap;
+        h3 {
+          color: rgb(211 213 253 / var(--tw-text-opacity)) !important;
+        }
+        a {
+          @apply px-1 py-0.5 flex justify-center  flex-nowrap w-fit;
+        }
+      }
+    }
+
+    .o-nav {
+      a {
+        @apply text-center flex justify-center  flex-nowrap;
+      }
+    }
+  }
+
+  .f-form {
+    @apply flex flex-wrap max-w-md mx-auto;
+    .my-i {
+      @apply block w-full my-1 outline-none py-0.5 px-1
+      
+      rounded-sm
+      transition-all duration-150;
+    }
+    input {
+      @apply text-black
+      placeholder:text-black/80
+      focus:drop-shadow-glow;
+    }
+    button {
+      @apply text-white 
+      drop-shadow-glow-link-1
+      hover:drop-shadow-glow-link-2 
+      focus:drop-shadow-glow-link-2 
+      active:drop-shadow-glow-link-3
+      text-xl pt-4;
+    }
+  }
+}
