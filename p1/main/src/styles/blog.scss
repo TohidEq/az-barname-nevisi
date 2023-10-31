@@ -114,5 +114,11 @@
       active:drop-shadow-glow-link-3
       text-xl pt-4;
     }
+    span {
+      @apply flex flex-nowrap justify-center;
+      svg {
+        @apply h-full px-0.5 mr-0.5;
+      }
+    }
   }
 }
