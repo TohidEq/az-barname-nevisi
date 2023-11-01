@@ -9,5 +9,3 @@
 ## [p2](p2/)
 
 - ### [mini p2](p2/mini/)
-
-- ### [main p2](p2/main/)

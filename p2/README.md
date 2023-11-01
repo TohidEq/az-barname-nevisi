@@ -14,8 +14,4 @@
 - 2.  hazine sabt naam baraye 1 maah 350 hezar tuman
 - 3.  zarfiat salon baraye har sans had aksar 15 nafar
 
-## [main](main/)
-
-test
-
 #### [main menu](../)
