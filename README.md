@@ -1,5 +1,9 @@
 # 🙂 main menu - az barname nevisi
 
+## [p0](p0/)
+
+- ### [mini p0](p0/mini/)
+
 ## [p1](p1/)
 
 - ### [mini p1](p1/mini/)
