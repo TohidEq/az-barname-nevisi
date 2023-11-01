@@ -8,7 +8,7 @@
 6. BBK daraamade maahianeye tedadi kaarmand ra daryaft karde va pas az kasre maaliaat, aanha ra bar asaase zir, meghdar hoghughe daryafti ra mohasebe o neshan dahad
 
 - hoghugh < 300 --> 0% maaliaat
-- 300 <= hoghugh <= 600 --> 7% maaliaat
+- 300 <= hoghugh <= 600 --> 8% maaliaat
 - hoghugh > 800 --> 12% maaliaat
 
 #### [back to p1](../)
