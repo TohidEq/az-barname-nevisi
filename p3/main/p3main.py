@@ -297,13 +297,13 @@ def printUsers(takht:int):
 # main menu(mm) Functions
 def mmShowUsers():
   print("\n\n\n\nShow Users Section")
-  print("\n>>>---1 Takte---<<<")
+  print("\n>>>---1 Takhte---<<<")
   printUsers(1)
 
-  print("\n>>>---2 Takte---<<<")
+  print("\n>>>---2 Takhte---<<<")
   printUsers(2)
 
-  print("\n>>>---3 Takte---<<<")
+  print("\n>>>---3 Takhte---<<<")
   printUsers(3)
   
   print("\n>>>---VIP---<<<")
@@ -339,9 +339,73 @@ def mmCancelRoom():
 
   input("\nBack to the main menu")
 
+def mmResRoom():
+  myDict = {} # to add all users and insert them in dictionary
+
+  print("\n\n\n\nRes Room Menu")
+  userTakht = int(input("chand takhte mikhaiid?(1~3 ya 4(vip))\n0 to return to main menu\n>> "))
+
+  # back to menu (user enter 0)
+  if(userTakht == "0"): return;
+  
+
+  teedad = 1 if userTakht==1 else int(input("faqat baraye khodet mikhaii ya chand nafar dige ham hastid?\n"))
+  
+
+  if teedad > userTakht: print("invalid value");return
+
+  # change userTakht value 4->0 to use it in our dictionaries
+  userTakht = 0 if userTakht == 4 else userTakht
+  freeRooms = getFreeRooms(userTakht)
+  print("otagh khali "+("nadarim" if freeRooms == [] else "darim"))
+  if(freeRooms==[]): input("\nBack to main menu");return ;
+
+
+  # get day, month, year (start, finish)
+  print("Taarikh shoro:")
+  myStartDay=int(input("day: "))
+  myStartMonth=int(input("month(number): "))
+  myStartYear=int(input("year(miladi[->2023]): "))
+  myStartDate = datetime(myStartYear, myStartMonth, myStartDay)
+
+  print("Taarikh payan:")
+  myFinishDay=int(input("day: "))
+  myFinishMonth=int(input("month(number): "))
+  myFinishYear=int(input("year(miladi[->2023]): "))
+  myFinishDate = datetime(myFinishYear,myFinishMonth,myFinishDay)
+  
+  daysStartToFinish = (myFinishDate - myStartDate).days
+  mainHazine = teedad*getHazine(userTakht,daysStartToFinish)
+
+  for i in range(teedad):
+    userId = input("code melli {0} ra vared kon: ".format("khodet" if i==0 else "shakse baadi"))
+    firstName = input("first name:")
+    lastName = input("last name:")
+    phone = input("phone:")
+    taahol = input("taahol(mojarad/motahel):")
+    userhazine = mainHazine if i==0 else 0
+    myDict[userId]={
+      "firstName":firstName,
+      "lastName":lastName,
+      "phone":phone,
+      "taahol":taahol,  # mojarad, motahel
+      "otaghId":freeRooms[0],
+      "start":myStartDate,
+      "finish":myFinishDate,
+      "hazine":userhazine
+    }
+
+
+  userTakht=str(userTakht)+"T"
+  # insert Data
+  rooms[userTakht][freeRooms[0]]["res"] = True;
+  for userId in myDict:
+    users[userTakht]["userId"]=myDict[userId]
+    rooms[userTakht][freeRooms[0]]["userIds"].append(userId)
 
 
 
+  input("\nBack to main menu")
 
 
 
@@ -362,7 +426,8 @@ def main():
     menuCotroller = input(mainMenu)
     match menuCotroller:
       case "1":
-        break
+        mmResRoom()
+
       case "2":
         mmCancelRoom()
         
@@ -374,6 +439,7 @@ def main():
 
       case "0":
         print("Bye")
+
       case _:
         print("Pls Enter Valid Number")
 
