@@ -1,7 +1,5 @@
-#include <cmath>
 #include <graphics.h>
 #include <iostream>
-#include <math.h>
 
 using namespace std;
 void myOlympic(int r);
