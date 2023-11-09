@@ -155,7 +155,7 @@ users = {
       "otaghId":"1",
       "start":datetime(2023, 11, 8),
       "finish":datetime(2023, 11, 10),
-      "hazine":890
+      "hazine":890*3 #8'om 9'om 10'om  mishavand 3 rooz
     }
   },
   "2T":{
@@ -191,8 +191,6 @@ def getHazine(takht:int, days:int):
   myHazineBase = hazineOtaghBase[str(takht)+"T"]
   return days*myHazineBase
 
-
-
 # sets
 def setNewRoom(takht:int, otaghId:int, userId:str):
   rooms[str(takht)+"T"][str(otaghId)]["res"] = True;
@@ -216,11 +214,6 @@ def setNewUser(takht:int, otagh:int, firstName, lastName, userId, phone, taahol,
   }
   
   return otagh
-
-
-
-
-
 
 def removeUser(userId:str):
   myTakht = ""
@@ -254,9 +247,6 @@ def removeUser(userId:str):
   users[myTakht].pop(userId)
   return
 
-
-
-
 #  to show to the users
 def printFreeRooms(takht:int):
   print("RoomId")
@@ -269,7 +259,7 @@ def printResRooms(takht:int):
   print("RoomId\tUsers(s)")
   for room in rooms[str(takht)+"T"]:
     if(rooms[str(takht)+"T"][room]["res"]==True):
-      thisRoomUsers = ' '.join(map(str, rooms[str(takht)+"T"][room]["userIds"]))
+      thisRoomUsers = ' va '.join(map(str, rooms[str(takht)+"T"][room]["userIds"]))
       print("{0}\t{1}".format(room, thisRoomUsers))
   return
 
@@ -284,14 +274,14 @@ def printUsers(takht:int):
         str(myUser["hazine"])+"\t"+
         userId
         )
-    
-    
-# date1 = datetime(2022, 1, 1)
-# date2 = datetime(2022, 2, 15)
-# difference = date2 - date1
 
-# print(difference.days)
-
+def printHazineBase():
+  print("Takht\t\tHazine har nafar baraye 1 shab")
+  for takht in hazineOtaghBase:
+    if(takht == "0T"):
+      print("4T(VIP)\t\t"+str(hazineOtaghBase[takht]))
+    else:
+      print(takht+"\t\t"+str(hazineOtaghBase[takht]))
 
 
 # main menu(mm) Functions
@@ -342,14 +332,18 @@ def mmCancelRoom():
 def mmResRoom():
   myDict = {} # to add all users and insert them in dictionary
 
-  print("\n\n\n\nRes Room Menu")
-  userTakht = int(input("chand takhte mikhaiid?(1~3 ya 4(vip))\n0 to return to main menu\n>> "))
+  print("\n\n\n\nRes Room Menu\n")
+  printHazineBase()
+  userTakht = int(input("""
+              \rchand takhte mikhaiid?(1~3 ya 4(vip))
+              \r0 to return to main menu
+              \r>> """))
 
   # back to menu (user enter 0)
   if(userTakht == "0"): return;
   
 
-  teedad = 1 if userTakht==1 else int(input("faqat baraye khodet mikhaii ya chand nafar dige ham hastid?\n"))
+  teedad = 1 if userTakht==1 else int(input("faqat baraye khodet mikhaii ya chand nafar dige ham hastid?\nteedad nafarat ra vared konid be adad(1=faghat shoma)\n>> "))
   
 
   if teedad > userTakht: print("invalid value");return
@@ -374,7 +368,8 @@ def mmResRoom():
   myFinishYear=int(input("year(miladi[->2023]): "))
   myFinishDate = datetime(myFinishYear,myFinishMonth,myFinishDay)
   
-  daysStartToFinish = (myFinishDate - myStartDate).days
+  daysStartToFinish = (myFinishDate - myStartDate).days + 1 #(+1 baraye avalin roze rezerv)
+  if(daysStartToFinish<=0):print("invalid dates");return ;
   mainHazine = teedad*getHazine(userTakht,daysStartToFinish)
 
   for i in range(teedad):
@@ -394,24 +389,18 @@ def mmResRoom():
       "finish":myFinishDate,
       "hazine":userhazine
     }
-
-
   userTakht=str(userTakht)+"T"
-  # insert Data
-  rooms[userTakht][freeRooms[0]]["res"] = True;
-  for userId in myDict:
-    users[userTakht]["userId"]=myDict[userId]
-    rooms[userTakht][freeRooms[0]]["userIds"].append(userId)
 
+  # insert Data into rooms
+  rooms[userTakht][freeRooms[0]]["res"] = True;
+  rooms[userTakht][freeRooms[0]]["userIds"]=list(myDict.keys())
+
+  # insert Data into users
+  for userId in myDict:
+    users[userTakht][userId]=myDict[userId]
 
 
   input("\nBack to main menu")
-
-
-
-
-
-
 
 def main():
   mainMenu = """\n>> Main Menu <<
@@ -442,9 +431,6 @@ def main():
 
       case _:
         print("Pls Enter Valid Number")
-
-  
-
 
 if __name__ == "__main__":
     main()
