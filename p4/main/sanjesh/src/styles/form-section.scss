@@ -1,0 +1,42 @@
+.form-section {
+  @apply prose;
+  h2 {
+    @apply text-white drop-shadow-glow-link-1;
+  }
+  .my-form {
+    @apply grid grid-cols-1;
+
+    .input {
+      @apply mb-3 bg-light/10 
+        px-2 py-1
+        rounded-sm
+        text-white
+        focus-visible:outline-none;
+    }
+    span {
+      @apply text-white
+        pb-1
+        text-lg
+        pl-1 
+        drop-shadow-glow-link-1;
+    }
+
+    #tavalod {
+      @apply w-36;
+    }
+
+    button {
+      @apply text-white 
+        py-4
+        text-2xl
+        drop-shadow-glow-link-1
+        hover:drop-shadow-glow-link-2 
+        active:drop-shadow-glow-link-3
+        transition-all duration-150;
+    }
+
+    .two {
+      @apply w-full grid grid-cols-1 sm:grid-cols-2 sm:gap-x-2;
+    }
+  }
+}
