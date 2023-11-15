@@ -1,0 +1,15 @@
+.home {
+  @apply prose;
+
+  h1 {
+    @apply text-white text-center drop-shadow-glow-link-1;
+  }
+
+  .links {
+    @apply grid grid-cols-2;
+    a {
+      @extend .link1;
+      @apply no-underline py-6 text-left prose-2xl text-white flex flex-nowrap;
+    }
+  }
+}
