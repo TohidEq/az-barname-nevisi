@@ -1,17 +1,19 @@
 .form-section {
   @apply prose;
   h2 {
-    @apply text-white drop-shadow-glow-link-1;
+    @apply text-white drop-shadow-glow-link-1 mt-0 sm:mt-3;
   }
   .my-form {
     @apply grid grid-cols-1;
 
     .input {
       @apply mb-3 bg-light/10 
+        border-l-2 border-transparent
         px-2 py-1
         rounded-sm
         text-white
-        focus-visible:outline-none;
+        focus-visible:border-l-white
+        focus-visible:outline-none focus-visible:bg-light/20;
     }
     span {
       @apply text-white
@@ -25,6 +27,10 @@
       @apply w-36;
     }
 
+    textarea {
+      @apply min-h-[84px];
+    }
+
     button {
       @apply text-white 
         py-4
@@ -32,11 +38,43 @@
         drop-shadow-glow-link-1
         hover:drop-shadow-glow-link-2 
         active:drop-shadow-glow-link-3
+        outline-0 outline-transparent
+        focus-visible:drop-shadow-glow-link-2
+        focus-visible:outline-none
         transition-all duration-150;
     }
 
-    .two {
-      @apply w-full grid grid-cols-1 sm:grid-cols-2 sm:gap-x-2;
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      @apply transition-all duration-150 drop-shadow-glow hover:drop-shadow-glow-link-2 invert hover:scale-110 active:drop-shadow-glow-link-3 active:scale-90 text-white
+      block w-5 h-5;
+    }
+  }
+  .two {
+    @apply w-full grid grid-cols-1 sm:grid-cols-2 sm:gap-x-2;
+  }
+
+  .etelaat {
+    @apply text-white;
+
+    .item {
+      @apply bg-light/5 px-2 py-1 mb-2;
+    }
+    img {
+      @apply mx-auto max-h-[140px] my-1;
+    }
+  }
+
+  .links {
+    .link {
+      @extend .link1;
+      @apply w-full block text-center no-underline text-lg py-2 my-2
+      drop-shadow-glow-link-1
+        hover:drop-shadow-glow-link-2 
+        active:drop-shadow-glow-link-3
+        outline-0 outline-transparent
+        focus-visible:drop-shadow-glow-link-2
+        focus-visible:outline-none
+        transition-all duration-150;
     }
   }
 }

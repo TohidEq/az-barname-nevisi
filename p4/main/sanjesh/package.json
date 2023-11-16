@@ -7,18 +7,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "run-json-server": "json-server --watch ./data/db.json --port 3001",
     "build-css": "tailwindcss --postcss -i ./src/styles/tailwind.scss -o ./src/styles/index.scss --watch"
   },
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
-    "json-server": "^0.17.4",
     "next": "14.0.2",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.12.0",
     "react-textarea-autosize": "^8.5.3",
-    "sass": "^1.69.5"
+    "sass": "^1.69.5",
+    "uploadthing": "^6.0.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
