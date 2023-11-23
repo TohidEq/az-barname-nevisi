@@ -1,0 +1,3 @@
+rasht 1000.0 
+khorasanRazavi 250000.0 
+khozestaan 600000.0 
