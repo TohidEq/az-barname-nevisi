@@ -22,4 +22,3 @@
 ## [p4](p4/)
 
 - ### [mini p4](p4/mini/)
-- ### [main p4](p4/main/)
