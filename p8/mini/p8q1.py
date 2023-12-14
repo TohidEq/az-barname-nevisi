@@ -13,7 +13,7 @@ matris_2_test = [[6, 8,  2,  5],
             [6, 8,  2,  5],
             [6, 8,  2,  5]]
 
-matirs_1 = [];
+matris_1 = [];
 matris_2 = [];
 
 
@@ -26,7 +26,7 @@ def input_matris(m,n):
     myInput = input(f"radif {i+1} om ra vaared konid\n>> ").split(" ");
 
     # check kardane teedad
-    if myInput.len != n:
+    if len(myInput) != n:
       print("vorodi naadorost ast...")
       return -1; # khoroj az func
 
@@ -40,10 +40,10 @@ def input_matris(m,n):
 
 
 
-def zarbMatris(myMatris_1, myMatris_2):
-  myMatris_1 = numpy.array(myMatris_1)
-  myMatris_2 = numpy.array(myMatris_2)
-  myArr = myMatris_1.dot(myMatris_2)
+def zarbMatris(mymatris_1, mymatris_2):
+  mymatris_1 = numpy.array(mymatris_1)
+  mymatris_2 = numpy.array(mymatris_2)
+  myArr = mymatris_1.dot(mymatris_2)
 
   return myArr;
 
@@ -56,24 +56,27 @@ def showMatris(myMatris):
 
 
 def newMatrisDot():
-  print("""m*n   m = satr,  n = sotun
-        \rtedad <soton> matris aval ba <satr> matris dovom barabar bayad bashad""")
+  print("""
+        \rm*n   m = satr,  n = sotun
+        \rtedad <soton> matris aval ba <satr> matris dovom barabar bayad bashad
+        \n""")
 
-  matris_1_m = input("matris 1 m(satr) \t>> ")
-  matris_1_n = input("matris 1 n(sotun)\t>> ")
+  matris_1_m = int(input("matris 1 m(satr) \t>> "))
+  matris_1_n = int(input("matris 1 n(sotun)\t>> "))
 
   matris_2_m = matris_1_n
   print(f"matris 2 m(satr) = {matris_2_m} = matris 1 n(sotun)")
 
-  matris_2_n = input("matris 2 n(sotun)\t>> ")
+  matris_2_n = int(input("matris 2 n(sotun)\t>> "))
 
   print("\ninput matris 1 data:")
-  matirs_1 = input_matris(matris_1_m, matris_1_n)
+  matris_1 = input_matris(matris_1_m, matris_1_n)
 
   print("\ninput matris 2 data:")
-  matirs_2 = input_matris(matris_2_m, matris_2_n)
+  matris_2 = input_matris(matris_2_m, matris_2_n)
 
   print("\n\n")
+
 
   print("matris 1:")
   showMatris(matris_1)
@@ -98,18 +101,14 @@ def testMatrisDot():
 
 control = True;
 while(control):
-  myInput = input("\n\n1. zarb matris haye jadid\n2. zarb matris haye testi\n0. exit")
+  myInput = input("\n\n1. zarb matris haye jadid\n2. zarb matris haye testi\n0. exit\n>> ")
 
   match(myInput):
     case "1":
       newMatrisDot()
-      break;
     case "2":
       testMatrisDot()
-      break
     case "0":
       print("bye")
       control = False;
       break
-
-
