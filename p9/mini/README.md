@@ -1,6 +1,6 @@
 ## [p9](../)
 
-1.
+1. mashin hesab ke natijash bere toye ...
 
 #### [back to p9](../)
 
